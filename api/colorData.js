@@ -1,6 +1,4 @@
-import { clientCredentials } from '../utils/client';
-
-const endpoint = clientCredentials.databaseURL;
+const endpoint = 'https://colourette-default-rtdb.firebaseio.com';
 
 const getColor = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/color.json`, {
@@ -9,7 +7,13 @@ const getColor = () => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
     },
   }).then((response) => response.json())
-    .then((data) => resolve(data))
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 
