@@ -53,3 +53,17 @@ body {
 .btn-group {
   gap: 3px;
 }
+
+.color-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.m-center {
+  margin: 0 auto;
+}
+
+.input-field {
+  width: 30%;
+  margin: 0 auto;
+}
