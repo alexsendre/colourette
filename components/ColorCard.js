@@ -17,7 +17,7 @@ function ColorCard({ colorObj }) {
         </Card.Title>
         <div className="text-center">
           <Link href={`/color/${colorObj.fbK}`} passHref>
-            <Button className="basic-btn">👀</Button>
+            <Button className="basic-btn">VIEW</Button>
           </Link>
         </div>
       </Card.Body>

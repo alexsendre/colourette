@@ -17,11 +17,11 @@ export default function ViewColors() {
 
   return (
     <>
-      <h1 className="text-center">COLORS</h1>
-      <hr className="mb-4 w-25" />
+      <h1 className="text-center mt-4">COLORS</h1>
+      <hr className="mb-4 w-25 center" />
       <div className="mt-3 mb-4 text-center">
         <Link href="/color/new" passHref>
-          <Button variant="primary" size="md" className="btn-m">Add a Color</Button>
+          <Button variant="primary" size="lg" className="basic-btn">Add a Color</Button>
         </Link>
       </div>
       <div className="d-flex flex-wrap justify-content-center">

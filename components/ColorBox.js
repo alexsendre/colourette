@@ -1,13 +1,22 @@
-import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 function ColorBox() {
+  const [hex, setHex] = useState('#000000');
+
+  const randomHex = () => {
+    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    setHex(randomColor);
+  };
+
   return (
-    <Link passHref href="/color/view">
-      <div className="color-box">
-        Hex Code
+    <>
+      <div className="gen-page-flow">
+        <h3>{hex}</h3>
+        <div className="color-box" style={{ backgroundColor: `${hex}` }} />
+        <Button className="mb-5 mt-3" variant="success" size="md" onClick={() => randomHex()}>RANDOMIZE</Button>
       </div>
-    </Link>
+    </>
   );
 }
 
