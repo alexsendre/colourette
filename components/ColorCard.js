@@ -12,6 +12,8 @@ function ColorCard({ colorObj }) {
       <Card.Body>
         <Card.Title className="text-center">
           {colorObj.name}
+          <br />
+          #{colorObj.hex}
         </Card.Title>
         <div className="text-center">
           <Link href={`/color/${colorObj.fbK}`} passHref>

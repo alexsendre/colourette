@@ -3,7 +3,7 @@ import React from 'react';
 
 function ColorBox() {
   return (
-    <Link passHref href="/test">
+    <Link passHref href="/color/view">
       <div className="color-box">
         Hex Code
       </div>
