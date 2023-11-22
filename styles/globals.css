@@ -43,6 +43,7 @@ body {
   border-radius: 10px;
   width: auto;
   height: 40px;
+  color: black;
 }
 
 .save-btn {
@@ -73,4 +74,9 @@ body {
   border-radius: 10px;
   background-color: transparent;
   color: black;
+}
+
+.form-height {
+  height: 60px;
+  gap: 5px;
 }

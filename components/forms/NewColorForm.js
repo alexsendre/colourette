@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { useRouter } from 'next/router';
@@ -72,17 +71,5 @@ function NewColorForm() {
     </div>
   );
 }
-
-// NewColorForm.propTypes = {
-//   obj: PropTypes.shape({
-//     name: PropTypes.string,
-//     hex: PropTypes.string,
-//     fbK: PropTypes.string,
-//   }),
-// };
-
-// NewColorForm.defaultProps = {
-//   obj: initialState,
-// };
 
 export default NewColorForm;

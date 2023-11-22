@@ -19,11 +19,11 @@ export default function NavBar() {
             <Link passHref href="/generate">
               <Nav.Link>Generate</Nav.Link>
             </Link>
-            <Link passHref href="/color/view">
-              <Nav.Link>All Colors</Nav.Link>
-            </Link>
             <Link passHref href="/palette/view">
               <Nav.Link>My Palettes</Nav.Link>
+            </Link>
+            <Link passHref href="/color/view">
+              <Nav.Link>All Colors</Nav.Link>
             </Link>
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>
