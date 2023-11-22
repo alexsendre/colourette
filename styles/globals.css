@@ -43,6 +43,7 @@ body {
   border-radius: 10px;
   width: auto;
   height: 40px;
+  color: black;
 }
 
 .save-btn {
@@ -59,11 +60,23 @@ body {
   margin: 0 auto;
 }
 
-.m-center {
+.center {
   margin: 0 auto;
 }
 
 .input-field {
   width: 30%;
   margin: 0 auto;
+}
+
+.basic-btn {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: transparent;
+  color: black;
+}
+
+.form-height {
+  height: 60px;
+  gap: 5px;
 }

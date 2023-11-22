@@ -1,15 +1,20 @@
-import Link from 'next/link';
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function ColorBox() {
+function ColorBox({ color }) {
   return (
-    <Link passHref href="/color/view">
-      <div className="color-box">
-        Hex Code
+    <>
+      <div className="gen-page-flow">
+        <h3>{color}</h3>
+        <div className="color-box" style={{ backgroundColor: `${color}` }} />
       </div>
-    </Link>
+    </>
   );
 }
+
+ColorBox.propTypes = {
+  color: PropTypes.string.isRequired,
+};
 
 export default ColorBox;
 

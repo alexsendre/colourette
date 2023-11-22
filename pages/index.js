@@ -1,9 +1,10 @@
 import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
   const { user } = useAuth();
+  const router = useRouter();
 
   return (
     <div
@@ -16,9 +17,9 @@ function Home() {
       }}
     >
       <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
+      <p>Click the button below to begin!</p>
+      <Button variant="primary" type="button" size="lg" className="copy-btn" onClick={() => router.push('/generate')}>
+        GENERATE
       </Button>
     </div>
   );

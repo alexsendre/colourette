@@ -1,7 +1,7 @@
 const endpoint = 'https://colourette-default-rtdb.firebaseio.com';
 
-const getColor = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/color.json`, {
+const getPalette = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/palette.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -13,12 +13,11 @@ const getColor = () => new Promise((resolve, reject) => {
       } else {
         resolve([]);
       }
-    })
-    .catch(reject);
+    }).catch(reject);
 });
 
-const getSingleColor = (fbK) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/color/${fbK}.json`, {
+const getSinglePalette = (fbK) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/palette/${fbK}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -28,8 +27,8 @@ const getSingleColor = (fbK) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const postColor = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/color.json`, {
+const createPalette = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/palette.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -40,8 +39,8 @@ const postColor = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateColor = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/color/${payload.fbK}.json`, {
+const updatePalette = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/palette/${payload.fbK}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -52,9 +51,21 @@ const updateColor = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deletePalette = (fbK) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/palette/${fbK}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
-  getColor,
-  getSingleColor,
-  postColor,
-  updateColor,
+  getPalette,
+  getSinglePalette,
+  createPalette,
+  updatePalette,
+  deletePalette,
 };
