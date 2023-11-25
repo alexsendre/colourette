@@ -102,13 +102,13 @@ function NewPaletteForm({ obj, colors }) {
 
   return (
     <>
-      <Button variant="primary" style={{ marginLeft: '5px' }} className="save-btn" onClick={handleShow}>
-        SAVE
+      <Button variant="primary" className="save-btn" onClick={handleShow}>
+        {obj.fbK ? 'EDIT' : 'SAVE'}
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal size="md" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Save Palette</Modal.Title>
+          <Modal.Title>{obj.fbK ? 'Update' : 'Save'} Palette</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>

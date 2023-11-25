@@ -13,7 +13,7 @@ function PaletteCard({ paletteObj, onUpdate }) {
 
   return (
     <Card style={{
-      width: '18rem', margin: '10px', backgroundColor: '#999999', color: 'white',
+      width: '18rem', margin: '10px', backgroundColor: 'darkgrey', color: 'white',
     }}
     >
       <Card.Body className="text-center">
@@ -27,12 +27,7 @@ function PaletteCard({ paletteObj, onUpdate }) {
           <Link href={`/palette/${paletteObj.fbK}`} passHref>
             <Button className="basic-btn">VIEW</Button>
           </Link>
-          <Link href={`/palette/${paletteObj.fbK}`} passHref>
-            <Button variant="warning" className="basic-btn">EDIT</Button>
-          </Link>
-          <Link href={`/palette/${paletteObj.fbK}`} passHref>
-            <Button variant="danger" className="basic-btn" onClick={removePalette}>DEL</Button>
-          </Link>
+          <Button variant="danger" className="basic-btn" onClick={removePalette}>DEL</Button>
         </div>
       </Card.Body>
     </Card>
