@@ -25,7 +25,6 @@ body {
   cursor: pointer;
   width: 200px;
   height: 300px;
-  background-color: lightcoral;
   border-radius: 10px;
 }
 
@@ -79,4 +78,15 @@ body {
 .form-height {
   height: 60px;
   gap: 5px;
+}
+
+.color-display {
+  cursor: pointer;
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.w-10 {
+  width: 10%;
 }
