@@ -2,10 +2,10 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { getSinglePalette } from '../../api/paletteData';
+import NewPaletteForm from '../../components/forms/NewPaletteForm';
 
 function ViewPalette() {
   const [paletteDetails, setPaletteDetails] = useState({});
-  // const [editItem, setEditItem] = useState({});
   const router = useRouter();
   const { fbK } = router.query;
 
@@ -50,7 +50,7 @@ function ViewPalette() {
           </div>
         </div>
         <div className="btn-group center">
-          <Button size="lg" className="basic-btn mt-4 center">EDIT</Button>
+          <NewPaletteForm obj={paletteDetails} />
           <Button size="lg" variant="danger" className="basic-btn mt-4 center">DELETE</Button>
         </div>
       </div>

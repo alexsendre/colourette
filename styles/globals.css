@@ -90,3 +90,10 @@ body {
 .w-10 {
   width: 10%;
 }
+
+.color-text {
+  color: white;
+  text-align: center;
+  text-shadow: 1px black;
+  font-size: 14px;
+}
