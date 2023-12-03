@@ -10,6 +10,7 @@ import {
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
 import { createPalette, updatePalette } from '../../api/paletteData';
+import { createPalettedColors, updatePalettedColors } from '../../api/palettedColorsData';
 
 const initialState = {
   title: '',
@@ -25,9 +26,16 @@ const colorsInitialState = {
 };
 
 function NewPaletteForm({ obj, colors }) {
-  const [formInput, setFormInput] = useState(initialState);
   const [show, setShow] = useState(false);
+  // Open/Close Modal functions
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const router = useRouter();
+  const { user } = useAuth();
+
+  const [formInput, setFormInput] = useState(initialState);
   // Array of strings for capturing hex code values
   const [formData, setFormData] = useState(obj.fbK ? {} : {
     hex1: colors[0],
@@ -37,38 +45,40 @@ function NewPaletteForm({ obj, colors }) {
     hex5: colors[4],
   });
 
-  const router = useRouter();
-  const { user } = useAuth();
-
-  // Open/Close Modal functions
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Capturing the string values and pushing them onto the POST request payload
-    const payloadWithHex = {
-      ...formInput,
-      hex1: formData.hex1,
-      hex2: formData.hex2,
-      hex3: formData.hex3,
-      hex4: formData.hex4,
-      hex5: formData.hex5,
-    };
 
     if (obj.fbK) {
       updatePalette(formInput).then(() => handleClose());
     } else {
-      const payload = { ...payloadWithHex, uid: user.uid };
-      createPalette(payload).then(({ name }) => {
+      const dataPayload = { ...formInput, uid: user.uid };
+
+      // creates palette node with title, description, fbK and uid values.
+      createPalette(dataPayload).then(({ name }) => {
+        setFormData((prev) => ({ ...prev, paletteId: name }));
+
         const patchPayload = { fbK: name };
 
         updatePalette(patchPayload).then(() => {
+          const payloadWithHex = {
+            hex1: formData.hex1,
+            hex2: formData.hex2,
+            hex3: formData.hex3,
+            hex4: formData.hex4,
+            hex5: formData.hex5,
+            paletteId: name,
+          };
+
+          // eslint-disable-next-line no-shadow
+          createPalettedColors(payloadWithHex).then(({ name }) => {
+            const patchHexPayload = { fbK: name };
+            updatePalettedColors(patchHexPayload);
+          });
           router.push('/palette/view');
         });
       });
     }
+    handleClose();
   };
 
   // For handling text based changes
@@ -82,7 +92,9 @@ function NewPaletteForm({ obj, colors }) {
 
   // Color dependency for ensuring the values are rendering when saving
   useEffect(() => {
-    if (obj.fbK) setFormInput(obj);
+    if (obj.fbK) {
+      setFormInput(obj);
+    }
 
     setFormData({
       hex1: colors[0] || '',
@@ -95,7 +107,7 @@ function NewPaletteForm({ obj, colors }) {
 
   return (
     <>
-      <Button variant="primary" className="save-btn" onClick={handleShow}>
+      <Button size="lg" className="save-btn" onClick={handleShow}>
         {obj.fbK ? 'EDIT' : 'SAVE'}
       </Button>
 
@@ -108,6 +120,7 @@ function NewPaletteForm({ obj, colors }) {
             <Form.Group>
               <FloatingLabel controlId="floatingInput1" label="Palette Title" className="mb-3">
                 <FormControl
+                  maxLength={24}
                   type="text"
                   placeholder="Enter Palette Title"
                   name="title"

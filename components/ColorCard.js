@@ -17,7 +17,7 @@ function ColorCard({ colorObj }) {
         </Card.Title>
         <div className="text-center">
           <Link href={`/color/${colorObj.fbK}`} passHref>
-            <Button className="basic-btn">VIEW</Button>
+            <Button className="basic-btn bg-black">👀</Button>
           </Link>
         </div>
       </Card.Body>
@@ -30,6 +30,7 @@ ColorCard.propTypes = {
     fbK: PropTypes.string,
     name: PropTypes.string,
     hex: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
 };
 

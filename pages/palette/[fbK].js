@@ -1,21 +1,27 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { getSinglePalette } from '../../api/paletteData';
 import NewPaletteForm from '../../components/forms/NewPaletteForm';
+import { getPalettedColors } from '../../api/palettedColorsData';
 
 function ViewPalette() {
   const [paletteDetails, setPaletteDetails] = useState({});
+  const [palettedColors, setPalettedColors] = useState([]);
   const router = useRouter();
   const { fbK } = router.query;
 
   const getDetails = () => {
-    getSinglePalette(fbK).then(setPaletteDetails);
+    getSinglePalette(fbK).then((details) => {
+      setPaletteDetails(details);
+      getPalettedColors(details.fbK).then((colors) => {
+        setPalettedColors(colors);
+      });
+    });
   };
 
   useEffect(() => {
     getDetails();
-  });
+  }, [fbK, paletteDetails]);
 
   return (
     <>
@@ -28,30 +34,33 @@ function ViewPalette() {
       </div>
       <div className="d-flex flex-column">
         <div className="d-flex flex-wrap justify-content-center gap-5">
-          <div className="d-flex flex-column text-center">
-            <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex1}` }} />
-            <h4>{paletteDetails.hex1}</h4>
-          </div>
-          <div className="d-flex flex-column text-center">
-            <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex2}` }} />
-            <h4>{paletteDetails.hex2}</h4>
-          </div>
-          <div className="d-flex flex-column text-center">
-            <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex3}` }} />
-            <h4>{paletteDetails.hex3}</h4>
-          </div>
-          <div className="d-flex flex-column text-center">
-            <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex4}` }} />
-            <h4>{paletteDetails.hex4}</h4>
-          </div>
-          <div className="d-flex flex-column text-center">
-            <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex5}` }} />
-            <h4>{paletteDetails.hex5}</h4>
-          </div>
+          {palettedColors.map((color) => (
+            <>
+              <div className="d-flex flex-column text-center">
+                <div className="color-display" style={{ backgroundColor: `${color.hex1}` }} />
+                <h4>{color.hex1}</h4>
+              </div>
+              <div className="d-flex flex-column text-center">
+                <div className="color-display" style={{ backgroundColor: `${color.hex2}` }} />
+                <h4>{color.hex2}</h4>
+              </div>
+              <div className="d-flex flex-column text-center">
+                <div className="color-display" style={{ backgroundColor: `${color.hex3}` }} />
+                <h4>{color.hex3}</h4>
+              </div>
+              <div className="d-flex flex-column text-center">
+                <div className="color-display" style={{ backgroundColor: `${color.hex4}` }} />
+                <h4>{color.hex4}</h4>
+              </div>
+              <div className="d-flex flex-column text-center">
+                <div className="color-display" style={{ backgroundColor: `${color.hex5}` }} />
+                <h4>{color.hex5}</h4>
+              </div>
+            </>
+          ))}
         </div>
-        <div className="btn-group center">
+        <div className="btn-group center mt-5">
           <NewPaletteForm obj={paletteDetails} />
-          <Button size="lg" variant="danger" className="basic-btn mt-4 center">DELETE</Button>
         </div>
       </div>
     </>

@@ -37,6 +37,7 @@ function NewColorForm() {
     <div className="text-center">
       <Form className="color-form" onSubmit={handleSubmit}>
         <h1 className="mt-5">Add a Color!</h1>
+        <hr className="w-25 center mb-3" />
         <Form.Group className="mt-4 mb-3 form-input" controlId="ControlInput1">
           <Form.Label>Color Name</Form.Label>
           <Form.Control
@@ -51,7 +52,7 @@ function NewColorForm() {
         <Form.Group className="mb-3 form-input" controlId="ControlTextarea1">
           <Form.Label>Hex Code</Form.Label>
           <br />
-          <Form.Text>Hex value ONLY, nothing else please!</Form.Text>
+          <Form.Text>Value Only</Form.Text>
           <Form.Control
             className="input-field"
             type="text"

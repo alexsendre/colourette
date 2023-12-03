@@ -13,21 +13,23 @@ function PaletteCard({ paletteObj, onUpdate }) {
 
   return (
     <Card style={{
-      width: '18rem', margin: '10px', backgroundColor: 'darkgrey', color: 'white',
+      width: '18rem', margin: '10px', backgroundColor: 'darkgrey', color: 'white', height: '210px',
     }}
     >
       <Card.Body className="text-center">
         <Card.Title className="text-center">
           {paletteObj.title}
         </Card.Title>
-        <CardText>
-          {paletteObj.description}
-        </CardText>
-        <div className="text-center btn-group">
+        <div style={{ height: '100px', overflow: 'scroll' }} className="mb-2">
+          <CardText>
+            {paletteObj.description}
+          </CardText>
+        </div>
+        <div className="text-center btn-group palette-btn">
           <Link href={`/palette/${paletteObj.fbK}`} passHref>
-            <Button className="basic-btn">VIEW</Button>
+            <Button className="basic-btn">👀</Button>
           </Link>
-          <Button variant="danger" className="basic-btn" onClick={removePalette}>DEL</Button>
+          <Button variant="danger" className="basic-btn" onClick={removePalette}>🗑️</Button>
         </div>
       </Card.Body>
     </Card>
