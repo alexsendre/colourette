@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import NewPaletteForm from './forms/NewPaletteForm';
 import ColorBox from './ColorBox';
@@ -15,6 +15,11 @@ function PaletteBox() {
     }
     setColors(arr);
   };
+
+  useEffect(() => {
+    randomColor();
+  }, []);
+
   return (
     <>
       <div className="palette-container text-center">
@@ -25,9 +30,11 @@ function PaletteBox() {
             ))
           }
         </div>
-        <Button variant="danger" className="generate-btn" onClick={() => randomColor()}>RANDOMIZE</Button>
+        <div className="mt-3">
+          <Button variant="danger" size="lg" style={{ marginRight: '5px' }} className="basic-btn" onClick={() => randomColor()}>RANDOMIZE</Button>
+          <NewPaletteForm colors={colors} />
+        </div>
       </div>
-      <NewPaletteForm colors={colors} />
     </>
   );
 }

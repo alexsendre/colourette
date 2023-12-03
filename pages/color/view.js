@@ -26,7 +26,7 @@ export default function ViewColors() {
       </div>
       <div className="d-flex flex-wrap justify-content-center">
         {colors?.map((color) => (
-          <ColorCard key={color.fbK} colorObj={color} onUpdate={getAllColors} />
+          <ColorCard key={color.id} colorObj={color} onUpdate={getAllColors} />
         ))}
       </div>
     </>
