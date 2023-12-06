@@ -6,6 +6,21 @@ import ColorBox from './ColorBox';
 
 function PaletteBox() {
   const [colors, setColors] = useState([]);
+  const [isLocked, setIsLocked] = useState(false);
+  const [lockedColors, setLockedColors] = useState([]);
+
+  const toggleLock = () => {
+    setIsLocked((locked) => {
+      if (!locked) {
+        setLockedColors([colors]);
+        console.warn('registered as:', locked, 'unlocked:', lockedColors);
+      } else {
+        setLockedColors((prevColors) => prevColors.slice(0, -1));
+        console.warn('registered as:', locked, 'locked:', lockedColors);
+      }
+      return !locked;
+    });
+  };
 
   const randomColor = () => {
     let arr = [];
@@ -18,6 +33,7 @@ function PaletteBox() {
 
   useEffect(() => {
     randomColor();
+    toggleLock();
   }, []);
 
   return (
@@ -26,12 +42,12 @@ function PaletteBox() {
         <div className="palette-box mt-4">
           {
             colors.map((color) => (
-              <ColorBox color={color} />
+              <ColorBox color={color} isLocked={isLocked} toggleLock={toggleLock} />
             ))
           }
         </div>
         <div className="mt-3">
-          <Button variant="danger" size="lg" style={{ marginRight: '5px' }} className="basic-btn" onClick={() => randomColor()}>RANDOMIZE</Button>
+          <Button variant="danger" size="lg" style={{ marginRight: '5px' }} className="basic-btn randomize-btn" onClick={() => randomColor()}>RANDOMIZE</Button>
           <NewPaletteForm colors={colors} />
         </div>
       </div>
