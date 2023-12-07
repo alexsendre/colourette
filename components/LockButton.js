@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 function LockButton({ toggleLockClick, isLocked }) {
   return (
     <div>
-      <Button size="sm" type="button" className="mt-2 mb-3 lock-btn" onClick={toggleLockClick}>{isLocked ? 'UNLOCK' : 'LOCK'}</Button>
+      <Button size="sm" type="button" className="mt-2 mb-3 lock-btn" onClick={toggleLockClick}>{isLocked ? 'LOCK' : 'UNLOCK'}</Button>
     </div>
   );
 }
