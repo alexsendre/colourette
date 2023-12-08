@@ -1,32 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// import { Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
-function ColorBox({ color }) {
-  // const [lock, setLock] = useState(false);
-  // const [prevData, setPrevData] = useState([]);
+function ColorBox({ color, isLocked, lockToggler }) {
+  const [currentColor, setCurrentColor] = useState(color);
 
-  // const handleUnlock = () => setLock(false);
-  // const handleLock = () => setLock(true);
-
-  // const lockColors = (e) => {
-  //   e.preventDefault();
-  //   console.warn('this is e', e);
-  //   console.warn('this is lock', lock);
-  //   if (e.target.value === 'LOCK') {
-  //     // e.preventDefault();
-  //     setLock(true);
-  //   } else if (e.target.value === 'UNLOCK') {
-  //     setLock(false);
-  //   }
-  // };
+  useEffect(() => {
+    setCurrentColor(color);
+  }, [color]);
 
   return (
     <>
       <div className="gen-page-flow">
-        <h3>{color}</h3>
-        <div className="color-box" style={{ backgroundColor: `${color}` }} />
-        {/* <Button size="sm" type="submit" className="mt-1 mb-3 lock-btn" onClick={lockColors}>LOCK</Button> */}
+        <h3>{currentColor}</h3>
+        <div className="color-box" style={{ backgroundColor: `${currentColor}` }} />
+        <div>
+          <Button size="sm" type="button" className="mt-2 mb-3 lock-btn" onClick={lockToggler}>{isLocked ? 'UNLOCK' : 'LOCK'}</Button>
+        </div>
       </div>
     </>
   );
@@ -34,10 +24,8 @@ function ColorBox({ color }) {
 
 ColorBox.propTypes = {
   color: PropTypes.string.isRequired,
+  isLocked: PropTypes.string.isRequired,
+  lockToggler: PropTypes.func.isRequired,
 };
 
 export default ColorBox;
-
-// TODO: look into wrapping return div with an anchor tag that routes to respective fbK on click
-// TODO: figure out a function that returns random values so that each color box is randomly generated
-// TODO: if ColorBox is LOCKED, use useMemo & useCallback to ensure cached value stays the same until unlocked

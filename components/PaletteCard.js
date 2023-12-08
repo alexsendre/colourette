@@ -41,6 +41,7 @@ PaletteCard.propTypes = {
     fbK: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
+    paletteId: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

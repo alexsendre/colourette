@@ -7,6 +7,7 @@ import { getPalettedColors } from '../../api/palettedColorsData';
 function ViewPalette() {
   const [paletteDetails, setPaletteDetails] = useState({});
   const [palettedColors, setPalettedColors] = useState([]);
+
   const router = useRouter();
   const { fbK } = router.query;
 

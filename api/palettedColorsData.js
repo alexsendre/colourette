@@ -40,4 +40,8 @@ const getPalettedColors = (fbK) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-export { createPalettedColors, updatePalettedColors, getPalettedColors };
+export {
+  createPalettedColors,
+  updatePalettedColors,
+  getPalettedColors,
+};

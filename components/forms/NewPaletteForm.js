@@ -55,7 +55,7 @@ function NewPaletteForm({ obj, colors }) {
 
       // creates palette node with title, description, fbK and uid values.
       createPalette(dataPayload).then(({ name }) => {
-        setFormData((prev) => ({ ...prev, paletteId: name }));
+        // setFormData((prev) => ({ ...prev, paletteId: name }));
 
         const patchPayload = { fbK: name };
 
@@ -121,6 +121,7 @@ function NewPaletteForm({ obj, colors }) {
               <FloatingLabel controlId="floatingInput1" label="Palette Title" className="mb-3">
                 <FormControl
                   maxLength={24}
+                  autoComplete="new-password"
                   type="text"
                   placeholder="Enter Palette Title"
                   name="title"
@@ -135,6 +136,8 @@ function NewPaletteForm({ obj, colors }) {
               <FloatingLabel controlId="floatingInput1" label="Palette Description" className="mb-3">
                 <FormControl
                   type="textarea"
+                  autoComplete="off"
+                  maxLength={256}
                   placeholder="Enter Palette Description"
                   name="description"
                   value={formInput.description}
@@ -206,14 +209,13 @@ NewPaletteForm.propTypes = {
   obj: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    hex1: PropTypes.string,
-    hex2: PropTypes.string,
-    hex3: PropTypes.string,
-    hex4: PropTypes.string,
-    hex5: PropTypes.string,
     fbK: PropTypes.string,
   }),
-  colors: PropTypes.arrayOf(PropTypes.string),
+  colors: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 };
 
 NewPaletteForm.defaultProps = {
