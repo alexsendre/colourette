@@ -1,41 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import LockButton from './LockButton';
+import { Button } from 'react-bootstrap';
 
-function ColorBox({ color, lockedColor }) {
-  const [isLocked, setIsLocked] = useState(false);
-  const [lockedColors, setLockedColors] = useState([]);
+function ColorBox({ color, isLocked, lockToggler }) {
   const [currentColor, setCurrentColor] = useState(color);
 
-  const toggleLock = () => {
-    setIsLocked((locked) => {
-      if (!locked) {
-        setLockedColors([color]);
-        setCurrentColor(color);
-        console.warn('registered as:', locked, 'unlocked:', lockedColors);
-      }
-      if (locked) {
-        setLockedColors((prevColors) => prevColors.slice(0, -1));
-        console.warn('registered as:', locked, 'locked:', lockedColors);
-      }
-      return !locked;
-    });
-  };
-
   useEffect(() => {
-    toggleLock();
-
-    if (lockedColor) {
-      setCurrentColor(color);
-    }
-  }, [lockedColor]);
+    setCurrentColor(color);
+  }, [color]);
 
   return (
     <>
       <div className="gen-page-flow">
         <h3>{currentColor}</h3>
         <div className="color-box" style={{ backgroundColor: `${currentColor}` }} />
-        <LockButton toggleLockClick={toggleLock} isLocked={isLocked} lockedColor={lockedColors} />
+        <div>
+          <Button size="sm" type="button" className="mt-2 mb-3 lock-btn" onClick={lockToggler}>{isLocked ? 'UNLOCK' : 'LOCK'}</Button>
+        </div>
       </div>
     </>
   );
@@ -43,7 +24,8 @@ function ColorBox({ color, lockedColor }) {
 
 ColorBox.propTypes = {
   color: PropTypes.string.isRequired,
-  lockedColor: PropTypes.string.isRequired,
+  isLocked: PropTypes.string.isRequired,
+  lockToggler: PropTypes.func.isRequired,
 };
 
 export default ColorBox;
