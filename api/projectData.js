@@ -39,8 +39,33 @@ const getSingleProject = (fbK) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const updateProject = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/projects/${payload.fbK}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  }).then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const deleteProject = (fbK) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/projects/${fbK}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json)
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getProject,
   createProject,
   getSingleProject,
+  updateProject,
+  deleteProject,
 };
