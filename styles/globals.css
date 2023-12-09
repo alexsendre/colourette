@@ -38,12 +38,12 @@ body {
 .save-btn {
   border: none;
   border-radius: 10px;
-  background-color: lightgreen;
-  color: rgb(111, 111, 111);
+  background-color: rgb(129, 255, 129);
+  color: rgb(0, 0, 0);
 }
 
 .save-btn:hover {
-  background-color: greenyellow;
+  background-color: #20D162;
 }
 
 .btn-group {
@@ -118,4 +118,10 @@ body {
 
 .randomize-btn {
   border: 2px solid black;
+}
+
+.on-card {
+  height: 15px;
+  width: 30px;
+  gap: 2px;
 }

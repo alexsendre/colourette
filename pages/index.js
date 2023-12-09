@@ -17,7 +17,7 @@ function Home() {
       }}
     >
       <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to begin!</p>
+      <p>Click the button below to begin</p>
       <Button variant="primary" type="button" size="lg" className="copy-btn" onClick={() => router.push('/generate')}>
         GENERATE
       </Button>

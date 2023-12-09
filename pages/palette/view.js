@@ -17,8 +17,22 @@ export default function ViewColors() {
     getAllPalettes();
   });
 
+  if (palettes.length < 1) {
+    return (
+      <div>
+        <h1 className="text-center mt-4">MY PALETTES</h1>
+        <hr className="mb-4 w-25 center" />
+        <div className="mt-3 mb-4 text-center">
+          <h3 className="mb-3">Nothing here.. yet. Click below to start generating a palette!</h3>
+          <Link href="/generate" passHref>
+            <Button variant="primary" size="lg" className="basic-btn">Generate Palette</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
   return (
-    <>
+    <div key={palettes.fbK}>
       <h1 className="text-center mt-4">MY PALETTES</h1>
       <hr className="mb-4 w-25 center" />
       <div className="mt-3 mb-4 text-center">
@@ -31,6 +45,6 @@ export default function ViewColors() {
           <PaletteCard key={palette.fbK} paletteObj={palette} onUpdate={getAllPalettes} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
