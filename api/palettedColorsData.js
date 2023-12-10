@@ -40,4 +40,25 @@ const getPalettedColors = (fbK) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-export { createPalettedColors, updatePalettedColors, getPalettedColors };
+const deletePalettedColors = (fbK) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/palettedColors.json?orderBy="paletteId"&equalTo="${fbK}"`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    }).catch(reject);
+});
+
+export {
+  createPalettedColors,
+  updatePalettedColors,
+  getPalettedColors,
+  deletePalettedColors,
+};
