@@ -125,3 +125,8 @@ body {
   width: 30px;
   gap: 2px;
 }
+
+.back-btn:hover {
+  transition: 300ms;
+  background-color: black;
+}

@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Button, Card, CardText } from 'react-bootstrap';
 import { deleteProject } from '../api/projectData';
+import { deleteProjectPalettes } from '../api/mergedData';
 
 function ProjectCard({ projectObj, onUpdate }) {
   const removeProject = () => {
     if (window.confirm(`Delete ${projectObj.name}?`)) {
-      deleteProject(projectObj.fbK).then().then(() => onUpdate());
+      deleteProject(projectObj.fbK).then(deleteProjectPalettes(projectObj.fbK)).then(() => onUpdate());
     }
   };
 

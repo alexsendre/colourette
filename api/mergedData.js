@@ -1,3 +1,4 @@
+import { deletePalette } from './paletteData';
 import { getProjectPalettes, getSingleProject } from './projectData';
 
 const viewProjectPalettes = (projectFbK) => new Promise((resolve, reject) => {
@@ -7,4 +8,15 @@ const viewProjectPalettes = (projectFbK) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export default viewProjectPalettes;
+const deleteProjectPalettes = (paletteId) => new Promise((resolve, reject) => {
+  getProjectPalettes(paletteId).then((palArr) => {
+    const deletePalettesPromises = palArr.map((palette) => deletePalette(palette.fbK));
+
+    Promise.all(deletePalettesPromises).then(resolve);
+  }).catch((error) => reject(error));
+});
+
+export {
+  viewProjectPalettes,
+  deleteProjectPalettes,
+};
