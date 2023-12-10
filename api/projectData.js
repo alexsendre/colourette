@@ -29,7 +29,7 @@ const getProject = (uid) => new Promise((resolve, reject) => {
 });
 
 const getSingleProject = (fbK) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/projects/${fbK}`, {
+  fetch(`${endpoint}/projects/${fbK}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -62,10 +62,27 @@ const deleteProject = (fbK) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getProjectPalettes = (fbK) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/palette.json?orderBy="project_id"&equalTo="${fbK}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    }).catch(reject);
+});
+
 export {
   getProject,
   createProject,
   getSingleProject,
   updateProject,
   deleteProject,
+  getProjectPalettes,
 };

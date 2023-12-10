@@ -10,11 +10,12 @@ import {
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
 import { createPalette, updatePalette } from '../../api/paletteData';
-// import { createPalettedColors, updatePalettedColors } from '../../api/palettedColorsData';
+import { getProject } from '../../api/projectData';
 
 const initialState = {
   title: '',
   description: '',
+  project_id: '',
 };
 
 const colorsInitialState = {
@@ -36,6 +37,7 @@ function NewPaletteForm({ obj, colors }) {
   const { user } = useAuth();
 
   const [formInput, setFormInput] = useState(initialState);
+  const [projects, setProjects] = useState([]);
   // Array of strings for capturing hex code values
   const [formData, setFormData] = useState(obj.fbK ? {} : {
     hex1: colors[0],
@@ -63,18 +65,9 @@ function NewPaletteForm({ obj, colors }) {
 
       // creates palette node with title, description, fbK and uid values.
       createPalette(dataPayload).then(({ name }) => {
-        // setFormData((prev) => ({ ...prev, paletteId: name }));
-
         const patchPayload = { fbK: name };
 
         updatePalette(patchPayload).then(() => {
-          // const payloadWithHex = {
-          //   hex1: formData.hex1,
-          //   hex2: formData.hex2,
-          //   hex3: formData.hex3,
-          //   hex4: formData.hex4,
-          //   hex5: formData.hex5,
-          // };
           router.push('/palette/view');
         });
       });
@@ -96,6 +89,8 @@ function NewPaletteForm({ obj, colors }) {
     if (obj.fbK) {
       setFormInput(obj);
     }
+
+    getProject(user.uid).then(setProjects);
 
     setFormData({
       hex1: colors[0] || '',
@@ -147,6 +142,31 @@ function NewPaletteForm({ obj, colors }) {
                 />
               </FloatingLabel>
             </Form.Group>
+
+            <Form.Group
+              className="mb-3"
+            >
+              <FloatingLabel controlId="floatingInput3" label="Project" className="mb-3 f-w f-c">
+                <Form.Select
+                  name="project_id"
+                  onChange={handleChange}
+                  value={formInput.project_id}
+                >
+                  <option value="">Select Project</option>
+                  {
+                projects.map((proj) => (
+                  <option
+                    key={proj.fbK}
+                    value={proj.fbK}
+                  >
+                    {proj.name}
+                  </option>
+                ))
+              }
+                </Form.Select>
+              </FloatingLabel>
+            </Form.Group>
+
             {obj.fbK ? ''
               : (
                 <Form.Group>
