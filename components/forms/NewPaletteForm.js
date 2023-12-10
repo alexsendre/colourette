@@ -10,7 +10,7 @@ import {
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
 import { createPalette, updatePalette } from '../../api/paletteData';
-import { createPalettedColors, updatePalettedColors } from '../../api/palettedColorsData';
+// import { createPalettedColors, updatePalettedColors } from '../../api/palettedColorsData';
 
 const initialState = {
   title: '',
@@ -51,7 +51,15 @@ function NewPaletteForm({ obj, colors }) {
     if (obj.fbK) {
       updatePalette(formInput).then(() => handleClose());
     } else {
-      const dataPayload = { ...formInput, uid: user.uid };
+      const dataPayload = {
+        ...formInput,
+        hex1: formData.hex1,
+        hex2: formData.hex2,
+        hex3: formData.hex3,
+        hex4: formData.hex4,
+        hex5: formData.hex5,
+        uid: user.uid,
+      };
 
       // creates palette node with title, description, fbK and uid values.
       createPalette(dataPayload).then(({ name }) => {
@@ -60,20 +68,13 @@ function NewPaletteForm({ obj, colors }) {
         const patchPayload = { fbK: name };
 
         updatePalette(patchPayload).then(() => {
-          const payloadWithHex = {
-            hex1: formData.hex1,
-            hex2: formData.hex2,
-            hex3: formData.hex3,
-            hex4: formData.hex4,
-            hex5: formData.hex5,
-            paletteId: name,
-          };
-
-          // eslint-disable-next-line no-shadow
-          createPalettedColors(payloadWithHex).then(({ name }) => {
-            const patchHexPayload = { fbK: name };
-            updatePalettedColors(patchHexPayload);
-          });
+          // const payloadWithHex = {
+          //   hex1: formData.hex1,
+          //   hex2: formData.hex2,
+          //   hex3: formData.hex3,
+          //   hex4: formData.hex4,
+          //   hex5: formData.hex5,
+          // };
           router.push('/palette/view');
         });
       });
