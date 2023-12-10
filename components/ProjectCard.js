@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Button, Card, CardText } from 'react-bootstrap';
-import { deletePalette } from '../api/paletteData';
+import { deleteProject } from '../api/projectData';
 
-function PaletteCard({ paletteObj, onUpdate }) {
-  const removePalette = () => {
-    if (window.confirm(`Remove ${paletteObj.title}?`)) {
-      deletePalette(paletteObj.fbK).then().then(() => onUpdate());
+function ProjectCard({ projectObj, onUpdate }) {
+  const removeProject = () => {
+    if (window.confirm(`Delete ${projectObj.name}?`)) {
+      deleteProject(projectObj.fbK).then().then(() => onUpdate());
     }
   };
 
@@ -19,18 +19,18 @@ function PaletteCard({ paletteObj, onUpdate }) {
       >
         <Card.Body className="text-center">
           <Card.Title className="text-center">
-            {paletteObj.title}
+            {projectObj.name}
           </Card.Title>
           <div style={{ height: '100px', overflow: 'scroll' }} className="mb-2">
             <CardText>
-              {paletteObj.description}
+              {projectObj.about}
             </CardText>
           </div>
           <div className="text-center btn-group palette-btn">
-            <Link href={`/palette/${paletteObj.fbK}`} passHref>
+            <Link href={`/projects/${projectObj.fbK}`} passHref>
               <Button className="basic-btn">👀</Button>
             </Link>
-            <Button variant="danger" className="basic-btn" onClick={removePalette}>🗑️</Button>
+            <Button variant="danger" className="basic-btn" onClick={removeProject}>🗑️</Button>
           </div>
         </Card.Body>
       </Card>
@@ -38,14 +38,13 @@ function PaletteCard({ paletteObj, onUpdate }) {
   );
 }
 
-PaletteCard.propTypes = {
-  paletteObj: PropTypes.shape({
+ProjectCard.propTypes = {
+  projectObj: PropTypes.shape({
     fbK: PropTypes.string,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    paletteId: PropTypes.string,
+    name: PropTypes.string,
+    about: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
 
-export default PaletteCard;
+export default ProjectCard;
