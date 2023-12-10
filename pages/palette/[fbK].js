@@ -2,8 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSinglePalette } from '../../api/paletteData';
 import NewPaletteForm from '../../components/forms/NewPaletteForm';
-import { getPalettedColors } from '../../api/palettedColorsData';
-// import { Button } from 'react-bootstrap';
+import { getPalettedColors } from '../../api/palettedColors';
 
 function ViewPalette() {
   const [paletteDetails, setPaletteDetails] = useState({});
@@ -24,12 +23,6 @@ function ViewPalette() {
   useEffect(() => {
     getDetails();
   }, [fbK, paletteDetails]);
-
-  // const fetchColor = (id) => {
-  //   fetch(`thecolorapi.com/id?format=html&hex=${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => console.warn(data));
-  // };
 
   return (
     <div key={paletteDetails.fbK}>

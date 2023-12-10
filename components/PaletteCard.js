@@ -6,8 +6,8 @@ import { deletePalette } from '../api/paletteData';
 
 function PaletteCard({ paletteObj, onUpdate }) {
   const removePalette = () => {
-    if (window.confirm(`Remove ${paletteObj.title} forever?`)) {
-      deletePalette(paletteObj.fbK).then().then(() => onUpdate());
+    if (window.confirm(`Remove ${paletteObj.title}?`)) {
+      deletePalette(paletteObj.fbK).then(() => onUpdate());
     }
   };
 

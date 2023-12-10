@@ -25,9 +25,6 @@ export default function NavBar() {
             {/* <Link passHref href="/color/view">
               <Nav.Link>All Colors</Nav.Link>
             </Link> */}
-            <Link passHref href="/projects/view">
-              <Nav.Link>My Projects</Nav.Link>
-            </Link>
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>
             </Link>

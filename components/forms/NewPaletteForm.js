@@ -10,7 +10,7 @@ import {
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
 import { createPalette, updatePalette } from '../../api/paletteData';
-import { createPalettedColors, updatePalettedColors } from '../../api/palettedColorsData';
+import { createPalettedColors, updatePalettedColors } from '../../api/palettedColors';
 
 const initialState = {
   title: '',
@@ -55,8 +55,6 @@ function NewPaletteForm({ obj, colors }) {
 
       // creates palette node with title, description, fbK and uid values.
       createPalette(dataPayload).then(({ name }) => {
-        // setFormData((prev) => ({ ...prev, paletteId: name }));
-
         const patchPayload = { fbK: name };
 
         updatePalette(patchPayload).then(() => {
