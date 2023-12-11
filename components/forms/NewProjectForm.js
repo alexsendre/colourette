@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { useRouter } from 'next/router';
@@ -40,16 +40,25 @@ function NewProjectForm({ obj }) {
     }
   };
 
+  useEffect(() => {
+    if (obj.fbK) setFormInput(obj);
+  }, [obj]);
+
   return (
     <Form onSubmit={handleSubmit} className="form">
-      <h2 className=" text-center mt-4">
+      <h2 className="text-center mt-4 mb-3">
         {obj.fbK ? 'Update' : 'Create'} Project
       </h2>
+      <hr className="center w-10 mb-4" />
 
       <Form.Group
-        className="mb-3 mt-3"
+        className="mb-3 mt-3 input-field"
       >
-        <FloatingLabel controlId="floatingInput1" label="Project Name" className="mb-3">
+        <FloatingLabel
+          controlId="floatingInput1"
+          label="Project Name"
+          className="mb-3"
+        >
           <Form.Control
             type="text"
             autoComplete="off"
@@ -64,11 +73,16 @@ function NewProjectForm({ obj }) {
       </Form.Group>
 
       <Form.Group
-        className="mb-3 mt-3"
+        className="mb-3 mt-3 input-field"
       >
-        <FloatingLabel controlId="floatingInput2" label="Project Description" className="mb-3">
+        <FloatingLabel
+          controlId="floatingInput2"
+          label="Project Description"
+          className="mb-3"
+        >
           <Form.Control
-            type="textarea"
+            style={{ height: '100px' }}
+            as="textarea"
             autoComplete="off"
             maxLength={120}
             placeholder="Describe your project"

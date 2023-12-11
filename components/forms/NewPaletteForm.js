@@ -147,7 +147,7 @@ function NewPaletteForm({ obj, colors }) {
               <Form.Group
                 className="mb-3"
               >
-                <FloatingLabel controlId="floatingInput3" label="Link Project" className="mb-3 f-w f-c">
+                <FloatingLabel controlId="floatingInput3" label="Link Project" className="mb-3">
                   <Form.Select
                     name="project_id"
                     onChange={handleChange}

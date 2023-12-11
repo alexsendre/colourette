@@ -31,6 +31,9 @@ function ProjectCard({ projectObj, onUpdate }) {
             <Link href={`/projects/${projectObj.fbK}`} passHref>
               <Button className="basic-btn">👀</Button>
             </Link>
+            <Link href={`/projects/edit/${projectObj.fbK}`} passHref>
+              <Button className="basic-btn">✏️</Button>
+            </Link>
             <Button variant="danger" className="basic-btn" onClick={removeProject}>🗑️</Button>
           </div>
         </Card.Body>

@@ -24,21 +24,21 @@ export default function ViewTeam() {
     <div>
       <div className="mt-5 mb-5 text-center">
         <div className="d-flex justify-content-start">
-          <Button size="lg" className="basic-btn back-btn mt-2" onClick={() => router.push('/projects/view')}>Back</Button>
+          <Button size="lg" className="basic-btn back-btn mt-2" onClick={() => router.push('/projects/view')}>BACK</Button>
         </div>
         <div>
-          <h1>{projectDetails.name}</h1>
-          <hr className="mb-3 w-10 center" />
-          <h4>{projectDetails.about}</h4>
+          <h1 className="display-4 fw-bolder">{projectDetails.name}</h1>
+          <hr className="mb-3 w-25 center" />
+          <h4 className="display-6">{projectDetails.about}</h4>
         </div>
       </div>
       <div className="d-flex flex-column">
         <div className="text-center">
           <h3 className="mt-3 text-center">PALETTES</h3>
-          <hr className="mb-3 w-25 center" />
+          <hr className="mb-3 w-10 center" />
         </div>
         <div className="d-flex flex-wrap justify-content-center">
-          {projectDetails.palettes?.map((palette) => (
+          {(projectDetails.palettes < 1) ? 'No palettes linked yet!' : projectDetails.palettes?.map((palette) => (
             <PaletteCard key={palette.fbK} paletteObj={palette} onUpdate={getDetails} />
           ))}
         </div>

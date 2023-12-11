@@ -19,7 +19,7 @@ function ViewPalette() {
 
   return (
     <div key={paletteDetails.fbK}>
-      <div className="d-flex flex-row">
+      <div className="d-flex flex-row top-view">
         <div className="mt-5 mx-5 d-flex flex-row">
           <div className="mb-5">
             <h1 className="display-4 fw-bolder">{paletteDetails.title}</h1>
@@ -27,7 +27,7 @@ function ViewPalette() {
             <h3 className="display-5">{paletteDetails.description}</h3>
           </div>
         </div>
-        <div className="btn-group center mt-4 mb-5">
+        <div className="btn-group edit-btn-view">
           <NewPaletteForm obj={paletteDetails} />
         </div>
       </div>

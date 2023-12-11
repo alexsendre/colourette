@@ -65,7 +65,7 @@ body {
 }
 
 .basic-btn {
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 10px;
   background-color: transparent;
   color: black;
@@ -129,4 +129,24 @@ body {
 .back-btn:hover {
   transition: 300ms;
   background-color: black;
+}
+
+.input-field {
+  margin: 0 auto;
+}
+
+hr {
+  border-bottom: 1px solid black;
+}
+
+.edit-btn-view {
+  height: 50px;
+  width: 40px;
+  top: 50px;
+  right: 7%;
+}
+
+.top-view {
+  display: flex;
+  justify-content: space-between;
 }
