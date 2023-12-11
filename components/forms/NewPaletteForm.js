@@ -143,17 +143,18 @@ function NewPaletteForm({ obj, colors }) {
               </FloatingLabel>
             </Form.Group>
 
-            <Form.Group
-              className="mb-3"
-            >
-              <FloatingLabel controlId="floatingInput3" label="Project" className="mb-3 f-w f-c">
-                <Form.Select
-                  name="project_id"
-                  onChange={handleChange}
-                  value={formInput.project_id}
-                >
-                  <option value="">Select Project</option>
-                  {
+            {obj.fbK ? '' : (
+              <Form.Group
+                className="mb-3"
+              >
+                <FloatingLabel controlId="floatingInput3" label="Link Project" className="mb-3 f-w f-c">
+                  <Form.Select
+                    name="project_id"
+                    onChange={handleChange}
+                    value={formInput.project_id}
+                  >
+                    <option value="">Select Project</option>
+                    {
                 projects.map((proj) => (
                   <option
                     key={proj.fbK}
@@ -163,9 +164,10 @@ function NewPaletteForm({ obj, colors }) {
                   </option>
                 ))
               }
-                </Form.Select>
-              </FloatingLabel>
-            </Form.Group>
+                  </Form.Select>
+                </FloatingLabel>
+              </Form.Group>
+            )}
 
             {obj.fbK ? ''
               : (
