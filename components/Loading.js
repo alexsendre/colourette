@@ -5,13 +5,13 @@ import {
 
 export default function Loading() {
   return (
-    <div className="text-center mt-5">
+    <div className="text-center mt-3">
       <Spinner
         animation="border"
         style={{
-          color: '#00BF67',
-          width: '100px',
-          height: '100px',
+          color: 'black',
+          width: '40px',
+          height: '40px',
         }}
       />
     </div>

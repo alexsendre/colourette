@@ -17,7 +17,7 @@ export default function ProfileArea() {
   });
 
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column mb-5">
       <div className="text-center float-start">
         <img src={user.photoURL} alt="User Profile" className="w-25 mt-5" />
         <br />

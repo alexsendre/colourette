@@ -38,12 +38,12 @@ body {
 .save-btn {
   border: none;
   border-radius: 10px;
-  background-color: lightgreen;
-  color: rgb(111, 111, 111);
+  background-color: rgb(129, 255, 129);
+  color: rgb(0, 0, 0);
 }
 
 .save-btn:hover {
-  background-color: greenyellow;
+  background-color: #20D162;
 }
 
 .btn-group {
@@ -65,7 +65,7 @@ body {
 }
 
 .basic-btn {
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 10px;
   background-color: transparent;
   color: black;
@@ -118,4 +118,35 @@ body {
 
 .randomize-btn {
   border: 2px solid black;
+}
+
+.on-card {
+  height: 15px;
+  width: 30px;
+  gap: 2px;
+}
+
+.back-btn:hover {
+  transition: 300ms;
+  background-color: black;
+}
+
+.input-field {
+  margin: 0 auto;
+}
+
+hr {
+  border-bottom: 1px solid black;
+}
+
+.edit-btn-view {
+  height: 50px;
+  width: 40px;
+  top: 50px;
+  right: 7%;
+}
+
+.top-view {
+  display: flex;
+  justify-content: space-between;
 }

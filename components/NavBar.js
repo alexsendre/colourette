@@ -8,7 +8,13 @@ import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+      sticky="top"
+    >
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>Colourette</Navbar.Brand>
@@ -22,8 +28,11 @@ export default function NavBar() {
             <Link passHref href="/palette/view">
               <Nav.Link>My Palettes</Nav.Link>
             </Link>
-            <Link passHref href="/color/view">
+            {/* <Link passHref href="/color/view">
               <Nav.Link>All Colors</Nav.Link>
+            </Link> */}
+            <Link passHref href="/projects/view">
+              <Nav.Link>My Projects</Nav.Link>
             </Link>
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>

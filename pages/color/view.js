@@ -16,7 +16,7 @@ export default function ViewColors() {
   });
 
   return (
-    <>
+    <div key={colors.fbK}>
       <h1 className="text-center mt-4">COLORS</h1>
       <hr className="mb-4 w-25 center" />
       <div className="mt-3 mb-4 text-center">
@@ -26,9 +26,9 @@ export default function ViewColors() {
       </div>
       <div className="d-flex flex-wrap justify-content-center">
         {colors?.map((color) => (
-          <ColorCard key={color.id} colorObj={color} onUpdate={getAllColors} />
+          <ColorCard key={color.fbK} colorObj={color} onUpdate={getAllColors} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
