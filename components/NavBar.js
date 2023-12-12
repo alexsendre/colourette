@@ -26,13 +26,13 @@ export default function NavBar() {
               <Nav.Link>Generate</Nav.Link>
             </Link>
             <Link passHref href="/palette/view">
-              <Nav.Link>My Palettes</Nav.Link>
+              <Nav.Link>Palettes</Nav.Link>
             </Link>
             {/* <Link passHref href="/color/view">
               <Nav.Link>All Colors</Nav.Link>
             </Link> */}
             <Link passHref href="/projects/view">
-              <Nav.Link>My Projects</Nav.Link>
+              <Nav.Link>Projects</Nav.Link>
             </Link>
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>
