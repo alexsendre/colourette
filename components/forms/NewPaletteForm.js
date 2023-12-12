@@ -153,7 +153,7 @@ function NewPaletteForm({ obj, colors }) {
                   onChange={handleChange}
                   value={formInput.project_id}
                 >
-                  <option value="">Select Project</option>
+                  <option value="" disabled>Select Project</option>
                   {
                 projects.map((proj) => (
                   <option
