@@ -28,8 +28,8 @@ const colorsInitialState = {
 
 function NewPaletteForm({ obj, colors }) {
   const [show, setShow] = useState(false);
-  // Open/Close Modal functions
 
+  // Open/Close Modal functions
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -39,7 +39,7 @@ function NewPaletteForm({ obj, colors }) {
   const [formInput, setFormInput] = useState(initialState);
   const [projects, setProjects] = useState([]);
   // Array of strings for capturing hex code values
-  const [formData, setFormData] = useState(obj.fbK ? {} : {
+  const [formData, setFormData] = useState({
     hex1: colors[0],
     hex2: colors[1],
     hex3: colors[2],
@@ -53,7 +53,7 @@ function NewPaletteForm({ obj, colors }) {
     if (obj.fbK) {
       updatePalette(formInput).then(() => handleClose());
     } else {
-      const dataPayload = {
+      const payload = {
         ...formInput,
         hex1: formData.hex1,
         hex2: formData.hex2,
@@ -64,7 +64,7 @@ function NewPaletteForm({ obj, colors }) {
       };
 
       // creates palette node with title, description, fbK and uid values.
-      createPalette(dataPayload).then(({ name }) => {
+      createPalette(payload).then(({ name }) => {
         const patchPayload = { fbK: name };
 
         updatePalette(patchPayload).then(() => {
@@ -143,18 +143,18 @@ function NewPaletteForm({ obj, colors }) {
               </FloatingLabel>
             </Form.Group>
 
-            {obj.fbK ? '' : (
-              <Form.Group
-                className="mb-3"
-              >
-                <FloatingLabel controlId="floatingInput3" label="Link Project" className="mb-3">
-                  <Form.Select
-                    name="project_id"
-                    onChange={handleChange}
-                    value={formInput.project_id}
-                  >
-                    <option value="">Select Project</option>
-                    {
+            {/* {obj.fbK ? '' : ( */}
+            <Form.Group
+              className="mb-3"
+            >
+              <FloatingLabel controlId="floatingInput3" label="Link Project" className="mb-3">
+                <Form.Select
+                  name="project_id"
+                  onChange={handleChange}
+                  value={formInput.project_id}
+                >
+                  <option value="">Select Project</option>
+                  {
                 projects.map((proj) => (
                   <option
                     key={proj.fbK}
@@ -164,10 +164,10 @@ function NewPaletteForm({ obj, colors }) {
                   </option>
                 ))
               }
-                  </Form.Select>
-                </FloatingLabel>
-              </Form.Group>
-            )}
+                </Form.Select>
+              </FloatingLabel>
+            </Form.Group>
+            {/* )} */}
 
             {obj.fbK ? ''
               : (
@@ -234,11 +234,12 @@ NewPaletteForm.propTypes = {
     description: PropTypes.string,
     fbK: PropTypes.string,
   }),
-  colors: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.array,
-  ]),
+  colors: PropTypes.objectOf(PropTypes.string),
+  // colors: PropTypes.oneOfType([
+  //   PropTypes.string,
+  //   PropTypes.object,
+  //   PropTypes.array,
+  // ]),
 };
 
 NewPaletteForm.defaultProps = {

@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import PaletteCard from '../../components/PaletteCard';
 import { viewProjectPalettes } from '../../api/mergedData';
 
-export default function ViewTeam() {
+export default function ViewProjects() {
   const [projectDetails, setProjectDetails] = useState({});
 
   const router = useRouter();
@@ -36,6 +36,7 @@ export default function ViewTeam() {
         <div className="text-center">
           <h3 className="mt-3 text-center">PALETTES</h3>
           <hr className="mb-3 w-10 center" />
+          <Button size="md" className="basic-btn mb-3" onClick={() => router.push('/generate')}>Create Palette</Button>
         </div>
         <div className="d-flex flex-wrap justify-content-center">
           {(projectDetails.palettes < 1) ? 'No palettes linked yet!' : projectDetails.palettes?.map((palette) => (
