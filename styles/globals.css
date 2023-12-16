@@ -18,7 +18,7 @@ a {
 }
 
 body {
-  background-color: #eefdff;
+  background-color: #eefff6;
 }
 
 .color-box {
@@ -77,10 +77,15 @@ body {
 }
 
 .color-display {
-  cursor: pointer;
   width: 200px;
   height: 300px;
   border-radius: 10px;
+}
+
+.palette-display {
+  width: 60px;
+  height: 130px;
+  /* border-radius: 10px; */
 }
 
 .w-10 {
@@ -92,10 +97,6 @@ body {
   text-align: center;
   text-shadow: 1px black;
   font-size: 14px;
-}
-
-.palette-btn {
-  float: bottom;
 }
 
 .bg-black {
@@ -150,3 +151,24 @@ hr {
   display: flex;
   justify-content: space-between;
 }
+
+.profile-card {
+  background-color: #262626;
+  border-radius: 52% 48% 77% 23% / 33% 68% 33% 65%;
+  height: 250px;
+  width: 300px;
+  /* padding-right: 10px; */
+}
+
+.user-img {
+  border-radius: 20px;
+  width: 33%;
+}
+
+.pal-card-btn {
+  border: 2px solid black;
+}
+
+/* .transparent {
+  background-color: transparent;
+} */

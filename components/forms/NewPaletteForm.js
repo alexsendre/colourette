@@ -153,7 +153,7 @@ function NewPaletteForm({ obj, colors }) {
                   onChange={handleChange}
                   value={formInput.project_id}
                 >
-                  <option value="">Select Project</option>
+                  <option value="" disabled>Select Project</option>
                   {
                 projects.map((proj) => (
                   <option
@@ -234,12 +234,12 @@ NewPaletteForm.propTypes = {
     description: PropTypes.string,
     fbK: PropTypes.string,
   }),
-  colors: PropTypes.objectOf(PropTypes.string),
-  // colors: PropTypes.oneOfType([
-  //   PropTypes.string,
-  //   PropTypes.object,
-  //   PropTypes.array,
-  // ]),
+  // colors: PropTypes.objectOf(PropTypes.string),
+  colors: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 };
 
 NewPaletteForm.defaultProps = {
