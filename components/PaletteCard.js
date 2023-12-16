@@ -39,7 +39,7 @@ function PaletteCard({ paletteObj, onUpdate }) {
               <div className="">
                 <p className="palette-title">{paletteObj.title}</p>
               </div>
-              <div className="d-flex justify-content-end gap-2">
+              <div className="d-flex justify-content-end gap-3">
                 <div>
                   <Link href={`/palette/${paletteObj.fbK}`} passHref>
                     <Button className="btn-hide pal-card-btn">

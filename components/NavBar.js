@@ -1,9 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
 import {
   Navbar, Container, Nav, Button,
 } from 'react-bootstrap';
+import { Person } from 'react-bootstrap-icons';
 import { signOut } from '../utils/auth';
 
 export default function NavBar() {
@@ -17,7 +19,7 @@ export default function NavBar() {
     >
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand>Colourette</Navbar.Brand>
+          <Navbar.Brand>COLOURETTE</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -31,11 +33,13 @@ export default function NavBar() {
             <Link passHref href="/projects/view">
               <Nav.Link>Projects</Nav.Link>
             </Link>
-            <Link passHref href="/profile">
-              <Nav.Link>Profile</Nav.Link>
-            </Link>
           </Nav>
         </Navbar.Collapse>
+        <Link passHref href="/profile">
+          <Nav.Link className="mx-4">
+            <Person color="white" size={24} />
+          </Nav.Link>
+        </Link>
         <Button variant="danger" onClick={signOut}>Sign Out</Button>
       </Container>
     </Navbar>
