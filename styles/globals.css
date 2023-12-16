@@ -26,6 +26,9 @@ body {
   width: 200px;
   height: 300px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .palette-box {
@@ -85,7 +88,6 @@ body {
 .palette-display {
   width: 60px;
   height: 130px;
-  /* border-radius: 10px; */
 }
 
 .w-10 {
@@ -117,9 +119,9 @@ body {
   color: white;
 }
 
-.randomize-btn {
+/* .randomize-btn {
   border: 2px solid black;
-}
+} */
 
 .on-card {
   height: 15px;
@@ -127,7 +129,8 @@ body {
   gap: 2px;
 }
 
-.back-btn:hover {
+.back-btn:hover,
+.randomize-btn:hover {
   transition: 300ms;
   background-color: black;
 }
@@ -157,7 +160,6 @@ hr {
   border-radius: 52% 48% 77% 23% / 33% 68% 33% 65%;
   height: 250px;
   width: 300px;
-  /* padding-right: 10px; */
 }
 
 .user-img {
@@ -165,10 +167,22 @@ hr {
   width: 33%;
 }
 
-.pal-card-btn {
-  border: 2px solid black;
+.btn-hide {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  transition: 0.3s;
+  transform: scale(.97);
 }
 
-/* .transparent {
+.btn-hide:hover {
+  border: none;
   background-color: transparent;
-} */
+  transform: scale(1.02);
+  transform-origin: center;
+}
+
+.palette-title {
+  font-weight: bold;
+  font-size: 18px;
+}

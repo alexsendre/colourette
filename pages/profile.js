@@ -18,19 +18,20 @@ export default function ProfileArea() {
   });
 
   return (
-    <div className="mt-5">
-      <ProfileCard />
-      <div className="d-flex justify-content-around">
-        <div className="text-center mt-5">
-          <h1>Saved Palettes</h1>
-          <hr className="w-10 center mb-4" />
-          <div className="d-flex flex-wrap">
-            {palettes.map((palette) => (
-              <PaletteCard key={palette.fbK} paletteObj={palette} onUpdate={getAllPalettes} />
-            ))}
-          </div>
-        </div>
+    <div className="d-flex flex-column text-center mt-5 mb-5">
+      <div className="d-flex justify-content-center mb-5">
+        <ProfileCard />
+      </div>
+      <div className="mt-2">
+        <h1>My Palettes</h1>
+        <hr className="w-10 center mb-4" />
+      </div>
+      <div className="d-flex flex-wrap justify-content-center">
+        {palettes.map((palette) => (
+          <PaletteCard key={palette.fbK} paletteObj={palette} onUpdate={getAllPalettes} />
+        ))}
       </div>
     </div>
+
   );
 }
