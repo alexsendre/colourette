@@ -21,9 +21,10 @@ function ViewProjects() {
     return (
       <div>
         <h1 className="text-center mt-4">PROJECTS</h1>
-        <hr className="mb-4 w-25 center" />
+        <hr className="mb-4 w-10 center" />
         <div className="mt-3 mb-4 text-center">
-          <h3 className="mb-3">Nothing here.. yet. Click below to create a project!</h3>
+          <h4 className="mb-3">Nothing here.. yet.</h4>
+          <h3 className="mb-3">Click below to create a project!</h3>
           <Link href="/projects/new" passHref>
             <Button variant="primary" size="lg" className="basic-btn">Create Project</Button>
           </Link>
