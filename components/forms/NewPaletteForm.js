@@ -234,12 +234,12 @@ NewPaletteForm.propTypes = {
     description: PropTypes.string,
     fbK: PropTypes.string,
   }),
-  colors: PropTypes.objectOf(PropTypes.string),
-  // colors: PropTypes.oneOfType([
-  //   PropTypes.string,
-  //   PropTypes.object,
-  //   PropTypes.array,
-  // ]),
+  // colors: PropTypes.objectOf(PropTypes.string),
+  colors: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 };
 
 NewPaletteForm.defaultProps = {

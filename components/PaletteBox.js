@@ -15,12 +15,10 @@ function PaletteBox() {
       if (lockedColors.includes(index)) {
         // if color is locked, keep existing color
         arr[index] = colors[index];
-        console.warn('(includes index?) value of index:', arr[index]);
       } else {
         // if color ≠ locked, generate new
         let randomHex = `#${Math.floor(Math.random() * 16777215).toString(16).padEnd(6, 0).toUpperCase()}`;
         arr[index] = randomHex;
-        console.warn('random:', arr[index]);
       }
     }
     setColors(arr);
@@ -31,11 +29,9 @@ function PaletteBox() {
       // checks for value inside lockedColors array
       if (prevLockedColors.includes(value)) {
         // if value is true (the same value), it unlocks the color
-        console.warn('unlocked color:', colors[value]);
         return prevLockedColors.filter((lockedValue) => lockedValue !== value);
       }
       // if value is not the same, locks color
-      console.warn('locked color:', colors[value]);
       return [...prevLockedColors, value];
     });
   };
