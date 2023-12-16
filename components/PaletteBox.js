@@ -52,7 +52,7 @@ function PaletteBox() {
           }
         </div>
         <div className="mt-3">
-          <Button variant="danger" size="lg" style={{ marginRight: '5px' }} className="basic-btn randomize-btn" onClick={() => randomColor()}>RANDOMIZE</Button>
+          <Button size="lg" style={{ marginRight: '5px' }} className="basic-btn randomize-btn" onClick={() => randomColor()}>RANDOMIZE</Button>
           <NewPaletteForm colors={colors} />
         </div>
       </div>

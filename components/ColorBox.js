@@ -1,16 +1,21 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import { LockFill } from 'react-bootstrap-icons';
 
 function ColorBox({ color, isLocked, lockToggler }) {
   return (
     <>
-      <div className="gen-page-flow">
+      <div className="mt-2">
         <h3>{color}</h3>
-        <div className="color-box" style={{ backgroundColor: `${color}` }} />
-        <div>
-          <Button size="sm" type="button" className="mt-2 mb-3 lock-btn" onClick={lockToggler}>{isLocked ? 'UNLOCK' : 'LOCK'}</Button>
-        </div>
+        <Button variant="light" type="button" className="mb-2 btn-hide" onClick={lockToggler}>
+          <div className="color-box" style={{ backgroundColor: `${color}` }}>
+            <p>
+              {isLocked ? <LockFill color="black" size={48} /> : ''}
+            </p>
+          </div>
+        </Button>
       </div>
     </>
   );

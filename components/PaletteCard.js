@@ -1,6 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { Eye, Trash } from 'react-bootstrap-icons';
 import { Button } from 'react-bootstrap';
 import { deletePalette } from '../api/paletteData';
 
@@ -33,18 +35,22 @@ function PaletteCard({ paletteObj, onUpdate }) {
                 <div className="palette-display" style={{ backgroundColor: `${paletteObj.hex5}` }} />
               </div>
             </div>
-            <div className="d-flex justify-content-between mt-2 transparent">
-              <div style={{ filter: 'drop-shadow(0 0 0.05rem black)' }}>
-                {paletteObj.title}
+            <div className="d-flex justify-content-between mt-2">
+              <div className="">
+                <p className="palette-title">{paletteObj.title}</p>
               </div>
-              <div className="d-flex justify-content-end gap-1">
+              <div className="d-flex justify-content-end gap-3">
                 <div>
                   <Link href={`/palette/${paletteObj.fbK}`} passHref>
-                    <Button className="basic-btn pal-card-btn">VIEW</Button>
+                    <Button className="btn-hide pal-card-btn">
+                      <Eye color="black" size={24} />
+                    </Button>
                   </Link>
                 </div>
                 <div>
-                  <Button className="basic-btn pal-card-btn" onClick={removePalette}>DELETE</Button>
+                  <Button className="btn-hide pal-card-btn" onClick={removePalette}>
+                    <Trash color="black" size={21} />
+                  </Button>
                 </div>
               </div>
             </div>
