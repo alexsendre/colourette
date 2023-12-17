@@ -40,6 +40,7 @@ export default function NavBar() {
             <Person color="white" size={24} />
           </Nav.Link>
         </Link>
+        <span className="divider" />
         <Button variant="danger" onClick={signOut}>Sign Out</Button>
       </Container>
     </Navbar>
