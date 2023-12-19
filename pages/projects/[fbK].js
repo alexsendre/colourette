@@ -24,7 +24,7 @@ export default function ViewProjects() {
     <div>
       <div className="mt-5 mb-5 text-center">
         <div className="d-flex justify-content-start">
-          <Button size="lg" className="basic-btn back-btn mt-2" onClick={() => router.push('/projects/view')}>BACK</Button>
+          <Button size="sm" className="basic-btn back-btn mt-2" onClick={() => router.push('/projects/view')}>BACK</Button>
         </div>
         <div>
           <h1 className="display-4 fw-bolder">{projectDetails.name}</h1>
@@ -36,7 +36,7 @@ export default function ViewProjects() {
         <div className="text-center">
           <h3 className="mt-3 text-center">PALETTES</h3>
           <hr className="mb-3 w-10 center" />
-          <Button size="md" className="basic-btn mb-3" onClick={() => router.push('/generate')}>Create Palette</Button>
+          <Button size="md" className="basic-btn mb-3" onClick={() => router.push('/generate')}>Generate Palette</Button>
         </div>
         <div className="d-flex flex-wrap justify-content-center">
           {(projectDetails.palettes < 1) ? 'No palettes linked yet!' : projectDetails.palettes?.map((palette) => (

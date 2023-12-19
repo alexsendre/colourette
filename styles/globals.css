@@ -186,3 +186,20 @@ hr {
   font-weight: bold;
   font-size: 18px;
 }
+
+.divider {
+  border-left: 2px solid grey;
+  margin-right: 25px;
+  height: 30px;
+}
+
+.h-divider {
+  border-bottom: 1px solid black;
+  width: 120px;
+}
+
+.silent {
+  color: grey;
+  font-weight: normal;
+  font-size: 20px;
+}

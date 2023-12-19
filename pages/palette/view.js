@@ -22,9 +22,8 @@ export default function ViewColors() {
       <div>
         <h1 className="text-center mt-4">PALETTES</h1>
         <hr className="mb-4 w-10 center" />
-        <div className="mt-3 mb-4 text-center">
-          <h4 className="mb-3">Nothing here.. yet.</h4>
-          <h3 className="mb-3">Click below to generate a palette!</h3>
+        <div className="text-center">
+          <h4 className="mb-4 silent">Nothing here.. yet.</h4>
           <Link href="/generate" passHref>
             <Button variant="primary" size="lg" className="basic-btn">Generate Palette</Button>
           </Link>

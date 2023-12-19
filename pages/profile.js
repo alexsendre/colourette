@@ -31,8 +31,6 @@ export default function ProfileArea() {
             <hr className="w-10 center mb-2" />
           </div>
           <p className="display-6">This is where your saved palettes live.
-            <br />
-            No palettes? No problem!
           </p>
           <Link passHref href="/generate">
             <Button size="lg" className="basic-btn w-25 center mt-2">Generate!</Button>
