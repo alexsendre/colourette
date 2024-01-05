@@ -9,7 +9,7 @@ function ProfileCard() {
     <div>
       <div className="text-center float-start profile-card">
         <img src={user.photoURL} alt="User Profile" className="user-img mt-5" />
-        <h1 className="display-6 text-white">{user.displayName}</h1>
+        <h1 className="display-6 text-white mt-2">{user.displayName}</h1>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSinglePalette } from '../../api/paletteData';
@@ -35,23 +36,23 @@ function ViewPalette() {
         <div className="d-flex flex-wrap justify-content-center gap-5">
           <div className="d-flex flex-column text-center" key={paletteDetails.hex1}>
             <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex1}` }} />
-            <h4>{paletteDetails.hex1}</h4>
+            <h4 className="mt-3">{paletteDetails.hex1}</h4>
           </div>
           <div className="d-flex flex-column text-center" key={paletteDetails.hex2}>
             <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex2}` }} />
-            <h4>{paletteDetails.hex2}</h4>
+            <h4 className="mt-3">{paletteDetails.hex2}</h4>
           </div>
           <div className="d-flex flex-column text-center" key={paletteDetails.hex3}>
             <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex3}` }} />
-            <h4>{paletteDetails.hex3}</h4>
+            <h4 className="mt-3">{paletteDetails.hex3}</h4>
           </div>
           <div className="d-flex flex-column text-center" key={paletteDetails.hex4}>
             <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex4}` }} />
-            <h4>{paletteDetails.hex4}</h4>
+            <h4 className="mt-3">{paletteDetails.hex4}</h4>
           </div>
           <div className="d-flex flex-column text-center" key={paletteDetails.hex5}>
             <div className="color-display" style={{ backgroundColor: `${paletteDetails.hex5}` }} />
-            <h4>{paletteDetails.hex5}</h4>
+            <h4 className="mt-3">{paletteDetails.hex5}</h4>
           </div>
         </div>
       </div>
